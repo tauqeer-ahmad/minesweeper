@@ -8,7 +8,6 @@ class Board < ApplicationRecord
 
   before_create :generate_board
 
-
   def mines_less_than_total_cells
     if mines.present? && width.present? && height.present? && mines >= width * height
       errors.add(:mines, "must be less than total cells")
@@ -16,15 +15,15 @@ class Board < ApplicationRecord
   end
 
   def generate_board
-    board = Array.new(height) { Array.new(width, :empty) }
+    board = Array.new(height) { Array.new(width, '') }
     mines_placed = 0
 
     while mines_placed < mines
       row = rand(height)
       col = rand(width)
 
-      if board[row][col] == :empty
-        board[row][col] = :mine
+      if board[row][col] == ''
+        board[row][col] = '*'
         mines_placed += 1
       end
     end

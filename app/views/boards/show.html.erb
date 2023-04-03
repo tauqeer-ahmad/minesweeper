@@ -9,8 +9,8 @@
     <% @board.board_state.each do |row| %>
       <div class="row-container">
         <% row.each do |cell| %>
-          <div class="cell <%= 'mine' if cell == :mine %>">
-            <%= cell == :mine ? "💣" : "⬜️" %>
+          <div class="cell <%= 'mine' if cell == '*' %>">
+            <%= cell == '*' ? "💣" : "⬜️" %>
           </div>
         <% end %>
       </div>
