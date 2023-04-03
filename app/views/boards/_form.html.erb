@@ -1,0 +1,28 @@
+<%= form_with model: board, local: true, class: "needs-validation", novalidate: true do |f| %>
+  <div class="mb-3">
+    <%= f.label :email, "Email Address", class: "form-label" %>
+    <%= f.text_field :email, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :name, "Board Name", class: "form-label" %>
+    <%= f.text_field :name, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :width, "Board Width", class: "form-label" %>
+    <%= f.number_field :width, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :height, "Board Height", class: "form-label" %>
+    <%= f.number_field :height, class: "form-control", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :mines, "Number of Mines", class: "form-label" %>
+    <%= f.number_field :mines, class: "form-control", required: true %>
+  </div>
+
+  <%= f.submit "Generate Board", class: "btn btn-primary" %>
+<% end %>

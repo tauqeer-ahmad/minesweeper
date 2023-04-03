@@ -1,0 +1,23 @@
+<div class="mb-4">
+  <h1><%= @board.name %></h1>
+  <p>Created by: <%= @board.user.email %></p>
+</div>
+
+<div class="container">
+  <div class="row row-cols-<%= @board.width %>">
+    <% @board.generate_board.each_with_index do |row, i| %>
+      <% row.each_with_index do |cell, j| %>
+        <div class="col p-0">
+          <div class="text-center">
+            <%= cell == :mine ? "💣" : "⬜️" %>
+          </div>
+        </div>
+      <% end %>
+      <div class="clear"></div>
+    <% end %>
+  </div>
+</div>
+
+<div class="mt-4">
+  <%= link_to "Generate New Board", root_path, class: "btn btn-primary" %>
+</div>
