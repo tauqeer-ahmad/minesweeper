@@ -1,2 +1,48 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+
+.board-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+.board-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.row-container {
+  display: flex;
+}
+
+.cell {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+}
+
+.mine {
+  background-color: #f88;
+}
+
+@media (min-width: 576px) {
+  .cell {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+  }
+}
+
+@media (min-width: 768px) {
+  .cell {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+  }
+}

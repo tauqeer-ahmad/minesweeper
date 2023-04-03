@@ -3,17 +3,17 @@
   <p>Created by: <%= @board.user.email %></p>
 </div>
 
-<div class="container">
-  <div class="row row-cols-<%= @board.width %>">
-    <% @board.generate_board.each_with_index do |row, i| %>
-      <% row.each_with_index do |cell, j| %>
-        <div class="col p-0">
-          <div class="text-center">
+
+<div class="board-wrapper">
+  <div class="board-container">
+    <% @board.board_state.each do |row| %>
+      <div class="row-container">
+        <% row.each do |cell| %>
+          <div class="cell <%= 'mine' if cell == :mine %>">
             <%= cell == :mine ? "💣" : "⬜️" %>
           </div>
-        </div>
-      <% end %>
-      <div class="clear"></div>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
@@ -21,3 +21,16 @@
 <div class="mt-4">
   <%= link_to "Generate New Board", root_path, class: "btn btn-primary" %>
 </div>
+
+<% if @user_boards.any? %>
+  <div class="mt-5">
+    <h3>Previously Generated Boards by <%= @board.user.email %>:</h3>
+    <ul class="list-group mt-3">
+      <% @user_boards.each do |previous_board| %>
+        <li class="list-group-item">
+          <%= link_to previous_board.name, board_path(previous_board) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

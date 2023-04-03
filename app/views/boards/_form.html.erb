@@ -1,3 +1,14 @@
+<% if board.errors.any? %>
+  <div class="alert alert-danger">
+    <h4>Oops! There were some errors:</h4>
+    <ul>
+      <% board.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_with model: board, local: true, class: "needs-validation", novalidate: true do |f| %>
   <div class="mb-3">
     <%= f.label :email, "Email Address", class: "form-label" %>
