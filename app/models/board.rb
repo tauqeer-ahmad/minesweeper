@@ -10,4 +10,21 @@ class Board < ApplicationRecord
       errors.add(:mines, "must be less than total cells")
     end
   end
+
+  def generate_board
+    board = Array.new(height) { Array.new(width, :empty) }
+    mines_placed = 0
+
+    while mines_placed < mines
+      row = rand(height)
+      col = rand(width)
+
+      if board[row][col] == :empty
+        board[row][col] = :mine
+        mines_placed += 1
+      end
+    end
+
+    board
+  end
 end
