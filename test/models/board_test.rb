@@ -97,7 +97,7 @@ class BoardTest < ActiveSupport::TestCase
     mine_count = @board.mines.count
 
     assert_equal @board.mine_count, mine_count, "Board has incorrect number of mines"
-    assert (end_time - start_time) < 12, "Board generation took too long"
+    assert (end_time - start_time) < 2, "Board generation took too long"
   end
 
   test "should generate board efficiently with low mine-to-cell ratio" do
@@ -111,7 +111,7 @@ class BoardTest < ActiveSupport::TestCase
     mine_count = @board.mines.count
 
     assert_equal @board.mine_count, mine_count, "Board has incorrect number of mines"
-    assert (end_time - start_time) < 5, "Board generation took too long"
+    assert (end_time - start_time) < 1, "Board generation took too long"
   end
 
   test "should not allow negative mines" do

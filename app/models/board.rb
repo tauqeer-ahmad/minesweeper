@@ -16,8 +16,7 @@ class Board < ApplicationRecord
     generator = MineGeneratorService.new(self.width, self.height, self.mine_count)
     mine_positions = generator.generate_mines
 
-    mine_positions.each do |x, y|
-      Mine.create(board: self, x: x, y: y)
-    end
+    mines = mine_positions.map { |x, y| Mine.new(board: self, x: x, y: y) }
+    Mine.import mines, validate: false
   end
 end
