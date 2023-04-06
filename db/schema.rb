@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_03_121704) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_06_002317) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,12 +18,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_03_121704) do
     t.string "name"
     t.integer "width"
     t.integer "height"
-    t.integer "mines"
+    t.integer "mine_count"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "board_state"
     t.index ["user_id"], name: "index_boards_on_user_id"
+  end
+
+  create_table "mines", force: :cascade do |t|
+    t.bigint "board_id", null: false
+    t.integer "x"
+    t.integer "y"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_mines_on_board_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -33,4 +41,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_03_121704) do
   end
 
   add_foreign_key "boards", "users"
+  add_foreign_key "mines", "boards"
 end
