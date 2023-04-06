@@ -3,13 +3,11 @@ one:
   name: MyString
   width: 5
   height: 5
-  mines: 5
-  board_state: [["", "", "", "*", ""], ["", "", "*", "", ""], ["", "", "", "", ""], ["", "*", "", "*", ""], ["", "", "", "*", ""]]
+  mine_count: 5
 
 two:
   user: one
   name: AnotherBoard
   width: 5
   height: 5
-  mines: 5
-  board_state: [["", "", "", "*", ""], ["", "", "*", "", ""], ["", "", "", "", ""], ["", "*", "", "*", ""], ["", "", "", "*", ""]]
+  mine_count: 5

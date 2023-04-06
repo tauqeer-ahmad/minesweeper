@@ -9,13 +9,7 @@ class BoardsController < ApplicationController
 
     respond_to do |format|
       if @board.save
-        generator = MineGeneratorService.new(@board.width, @board.height, @board.mine_count)
-        mine_positions = generator.generate_mines
-
-        mine_positions.each do |x, y|
-          Mine.create(board: @board, x: x, y: y)
-        end
-
+        @board.generate_board
         format.html { redirect_to board_url(@board), notice: "Board was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }

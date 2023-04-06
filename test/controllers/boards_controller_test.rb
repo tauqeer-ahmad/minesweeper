@@ -8,14 +8,14 @@ class BoardsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create board" do
     assert_difference('Board.count', 1) do
-      post boards_url, params: { board: { email: 'test@example.com', name: 'Test Board', width: 10, height: 10, mines: 10 } }
+      post boards_url, params: { board: { email: 'test@example.com', name: 'Test Board', width: 10, height: 10, mine_count: 10 } }
     end
     assert_redirected_to board_path(Board.last)
   end
 
   test "should not create board with invalid data" do
     assert_no_difference('Board.count') do
-      post boards_url, params: { board: { email: 'test@example.com', name: '', width: 10, height: 10, mines: 10 } }
+      post boards_url, params: { board: { email: 'test@example.com', name: '', width: 10, height: 10, mine_count: 10 } }
     end
     assert_response :unprocessable_entity
   end
