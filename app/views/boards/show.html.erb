@@ -6,12 +6,18 @@
 
 <div class="board-wrapper">
   <div class="board-container">
-    <% @board.board_state.each do |row| %>
+    <% @board.height.times do |y| %>
       <div class="row-container">
-        <% row.each do |cell| %>
-          <div class="cell <%= 'mine' if cell == '*' %>">
-            <%= cell == '*' ? "💣" : "⬜️" %>
-          </div>
+        <% @board.width.times do |x| %>
+          <% if cell_contains_mine?(x, y, @mines) %>
+            <div class="cell mine">
+              💣
+            </div>
+          <% else %>
+            <div class="cell">
+              ⬜️
+            </div>
+          <% end %>
         <% end %>
       </div>
     <% end %>
